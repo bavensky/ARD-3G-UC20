@@ -32,8 +32,8 @@ HTTP http;
 #define USER ""
 #define PASS ""
 
-SoftwareSerial mySerial(8, 9); // RX, TX
-//AltSoftSerial mySerial;
+//SoftwareSerial mySerial(8, 9); // RX, TX
+AltSoftSerial mySerial;
 
 void debug(String data) {
   Serial.println(data);
@@ -65,7 +65,8 @@ void setup()  {
   Serial.println(F("Start HTTP"));
   http.begin(1);
   Serial.println(F("Send HTTP GET"));
-  http.url("http://api.thingspeak.com/update?api_key=5T4WXGZFE1PZPS2K&field1=55");
+//  http.url("http://api.thingspeak.com/update?api_key=5T4WXGZFE1PZPS2K&field1=55");
+  http.url("https://api.netpie.io/topic/SmartTrash/trash?auth=XQ6k3d23JGK15WG:KLOQM5CXr5xj1NPYzvkXnn0uU&data=1");
   Serial.println(http.get());
   Serial.println(F("Clear data in RAM"));
   file.Delete(RAM, "*");
